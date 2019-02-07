@@ -1,0 +1,25 @@
+#container {
+  width: 100%;
+  max-width: 960px;
+  border: 1px dotted red; /* Mona aime les pointillés */
+  border-radius: 3px;
+  margin: 20px auto 0 auto;
+  padding: 15px;
+}
+
+.container-btn, .container-score {
+  border: 1px dotted green;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-score {
+  border: 1px dotted blue;
+}
+
+button {
+  margin: 0 auto;
+  background-color: red;
+}
