@@ -1,7 +1,10 @@
+body{
+	padding: 20px;
+	}
 #container {
   width: 100%;
   max-width: 960px;
-  border: 1px dotted red; /* Mona aime les pointillés */
+  border: 1px solid #656565; /* Mona aime les pointillés */
   border-radius: 3px;
   margin: 20px auto 0 auto;
   padding: 15px;
@@ -26,9 +29,10 @@ button {
   border: 5px solid #726464;
   font-size: 12px;
   font-weight: 100;
-  margin: 0 auto;
+  margin: 20px;
   background-color: red;
-  border-radius: 50%;
+  border-radius: 20%;
+  
 }
 button :hover{
   background-color: #1219ce;
