@@ -20,6 +20,20 @@
 }
 
 button {
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+  border: 5px solid #726464;
+  font-size: 12px;
+  font-weight: 100;
   margin: 0 auto;
   background-color: red;
+  border-radius: 50%;
+}
+button :hover{
+  background-color: #1219ce;
+  color: white;
+}
+#affichage{
+	font-size: 30px;
 }

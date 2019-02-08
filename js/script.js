@@ -6,24 +6,33 @@
   var multiplicateur = 1;
   var boost = 50;
   var autoclick;
+  var autoclickStarted=false;
+
   function echoMultiplicateur() {document.getElementById("mult").textContent= multiplicateur};
   function echoAffichage() {document.getElementById("affichage").textContent= score};
 
 
   document.getElementById("clic").addEventListener("click", function() {
-      var y = score + multiplicateur;
-      score = y;
+      score = score + multiplicateur;
+      
+             
       echoAffichage();
       echoMultiplicateur();
+      
+/*-----Auto-click gratuit à 200-----
+      if(autoclickStarted==false){
       if(score >= 200){
         setInterval(autoClick, 1000);
-        var i = 0;
         function autoClick() {
-          i++;
-          alert("Hello!" + i);
+        score = score +1;
+        echoAffichage();        
+        
         }
-      };
-
+        autoclickStarted=true;
+      }
+      }
+*/
+	  
 
 
   });
@@ -41,7 +50,35 @@
 
   }
   });
+  
+  document.getElementById("autoclic").addEventListener("click", function() {
+  
+  echoAffichage();
+      if(autoclickStarted==false){
+      if(score >= 10){
+	    score = score - 10;
+        setInterval(autoClick, 1000);
+        function autoClick() {
+        score = score +1;
+        echoAffichage();        
+        
+        }
+        autoclickStarted=true;
+      }
+      }
 
+ });
+document.getElementById("bonus").addEventListener("click", function() {
+  
+  		echoAffichage();
+     if (score >= 50){
+	     score = score - 50;
+	     
+     }
+     
+     
+
+ });
 
 
 })();
