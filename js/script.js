@@ -27,6 +27,7 @@ document.getElementById("clic").addEventListener("click", function()
       score = score + multiplicateur;   
       echoAffichage();
       echoMultiplicateur();
+      console.log(score);
       
 /*-----Auto-click gratuit à 200€-----
 	
