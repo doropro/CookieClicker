@@ -1,17 +1,16 @@
 body{
 	padding: 20px;
+	font-family: arial;
 	}
 #container {
   width: 100%;
   max-width: 960px;
-  border: 1px solid #656565; /* Mona aime les pointillés */
   border-radius: 3px;
   margin: 20px auto 0 auto;
   padding: 15px;
 }
 
 .container-btn, .container-score {
-  border: 1px dotted green;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -19,25 +18,43 @@ body{
 }
 
 .container-score {
-  border: 1px dotted blue;
-}
+	background-color: #a9a9a9;
+	border-radius: 5px;
 
-button {
+}
+.btn-primary{
+  background-color: #993333;
+}
+.btn-green{
+  background-color: #0e6815;
+}
+.btn-yeallow{
+  border: 2px solid #771b1b;
+  background-color: #993333;
+}
+.btn {
   height: 100px;
   width: 100px;
   padding: 10px;
-  border: 5px solid #726464;
   font-size: 12px;
   font-weight: 100;
   margin: 20px;
-  background-color: red;
-  border-radius: 20%;
+  color: #ffffff;
+  border-radius: 5%;
+  border: 2px solid transparent;
+  box-shadow: 4px 0px 5px #5e5e5e;
   
 }
-button :hover{
-  background-color: #1219ce;
-  color: white;
+.btn:hover{
+  background-color: #5e0e0e;
+}
+.btn-green:hover{
+  background-color: #084a0d;
 }
 #affichage{
-	font-size: 30px;
+	font-size: 50px;
+	color: #ffffff;
+}
+#echo_chrono, #autoclic, #multiplicateur, #clic{
+	font-size: 15px;
 }
