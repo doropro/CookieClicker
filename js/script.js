@@ -1,4 +1,4 @@
-var c = document.getElementById("etoiles"); // on appelle id canvas dans son script
+var c = document.getElementById("etoiles"); // on appelle l'id canvas dans son script
 
 var ctx = c.getContext("2d"); //on defini 2d ou 3d
 			
@@ -16,9 +16,9 @@ var autoclickStarted=false;
 var bonnusStarted=false;
 var valueChrono=11;
 
-// l'affichage est mise dans une fonction
+// l'affichage est mis dans une fonction
 function echoMultiplicateur() {document.getElementById("mult").textContent= multiplicateur};
-function echoAffichage() {document.getElementById("affichage").textContent= score + " €"};
+function echoAffichage() {document.getElementById("affichage").textContent= "Score : " + score};
 function chrono() {document.getElementById("echo_chrono").textContent= valueChrono};
 
 
@@ -42,9 +42,44 @@ var flux = setInterval(star, 100);
 }
 */
 
+/*
+var flow = setInterval(loopflow, 100);
 
-var randomXRec = [];
-var randomYRec = [];
+function loopflow() //loop global de la chute des étoiles
+{ 
+	var randomX = Math.floor(Math.random() * 845, 1); // création randomisée de coordonnées de l'axe X
+	var randomY = Math.floor(Math.random() * 495, 1); // création randomisée de coordonnées de l'axe Y
+	var speed = Math.floor(Math.random() * 70, 50); // création randomisée de la vitesse de chute du flocon	
+	
+	var velocity =0; //point initial du debut de la chute
+	
+	var flux = setInterval(star, speed);
+	
+	function star()
+	{
+		ctx.clearRect(0, 0, 850, 500); //efface la zone CANVAS
+			
+		velocity += 10; //intervalle entre 2 di
+		
+		var findY = randomY+velocity;		
+			
+			
+		ctx.fillStyle = "white";
+		ctx.fillRect(randomX, findY, 1, 20);
+		
+		
+		if(findY >= 500)
+		{
+			clearInterval(flux);
+		}
+		
+		console.log(findY);
+	}
+
+}
+*/
+
+
 
 // Augmentation de 1€ à chaque click
 document.getElementById("clic").addEventListener("click", function()
@@ -73,42 +108,59 @@ document.getElementById("clic").addEventListener("click", function()
 	      }
       }
 */
+var turbo = 4000 - score;
 
 
-if(score <= 1 )
-{
-	for (var iter = 1; iter <= 500; iter++)
-		{
-		var randomX = Math.floor(Math.random() * 850);
-		var randomY = Math.floor(Math.random() * 500);
-			
-		randomXRec.push(randomX);
-		randomYRec.push(randomY);
+
+
+var speed = score;
+if(speed >= 10){starLength = 10;}
+
+var starLength = 2;
+starLength += score;
+if(starLength >= 30){starLength = 30;}
+
+var starWidth;
+if(starWidth <= 0){starWidth = 1;}
+
+
+
+var flow = setInterval(loopflow, turbo );
+
+function loopflow() //loop global de la chute des étoiles
+{ 
+	
+		var randomX = Math.floor(Math.random() * 845, 1); // création randomisée de coordonnées de l'axe X
+			var randomY = Math.floor(Math.random() * 495, 1); // création randomisée de coordonnées de l'axe Y
 		
-		ctx.fillStyle = "yellow";
-		ctx.fillRect(randomX, randomY, 5, 5);
+		var velocity =0; //point initial du debut de la chute
+		
+		var flux = setInterval(star, 150); // Ne pas toucher
+		
+		function star()
+		{
+			
+		
+			ctx.clearRect(0, 0, 850, 500); //efface la zone CANVAS
+				
+			velocity += 1; //intervalle entre 2 di
+			
+			var findY = randomY+velocity;		
+				
+				
+			ctx.fillStyle = "white";
+			ctx.fillRect(randomX, findY, 2, starLength);
+			
+			
+			if(findY >= 500)
+			{
+				clearInterval(flux);
+			}
+			
+			console.log(findY);
 		}
 }
-else
-{	
-	var ry = 0;
-	var flux = setInterval(star, 10);
-	function star(){
-	
-	ctx.clearRect(0, 0, 850, 500);
-			ry = ry +10;
-	
-	for (var iter = 1; iter <= randomXRec.length; iter++)
-		{
-		var findX = randomXRec[iter];
-		var findY = randomYRec[iter];
-			
-		ctx.fillStyle = "blue";
-		ctx.fillRect(findX+2, findY+ry, 3, 3);
-	}
-}
 
-}
 
 });
 // Augmentation du multiplicateur (booster)
