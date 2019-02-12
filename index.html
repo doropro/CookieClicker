@@ -12,26 +12,29 @@
 
 </head>
 
-<body>
+	<body>
+		<main id="container">
+			<div id="tower">
+				<div class="container-btn">
+					<button type="button" id="clic" class="btn btn-green">MASH ME</button>
+					<button type="button" id="multiplicateur" class="btn btn-primary">BOOSTER X<span id="mult">1</span>  Next boost costs <span id="boostCost">50€</span></button>
+					<button type="button" id="autoclic" class="btn btn-primary">Auto Click 500€</button>
+					<button type="button" id="bonus" class="btn btn-primary"><div id="echo_chrono">200%<br>5000€</div></button>
+				</div>
+				    
+				<div class="container-score">
+					<div id="affichage" value="0">0 €</div>
+				</div>
+			</div>
+			<canvas id="etoiles" width="850" height="500" style="background-color: #030c22";>
+				Votre navigateur ne supporte pas Canvas
+			</canvas>
+			
+			
 
-  <main id="container">
-    <div class="container-btn">
-	    
-        <button type="button" id="clic" class="btn btn-green">MASH ME</button>
-        <button type="button" id="multiplicateur" class="btn btn-primary">BOOSTER X<span id="mult">1</span>  Next boost costs <span id="boostCost">50€</span></button>
-        <button type="button" id="autoclic" class="btn btn-primary">Auto Click 500€</button>
-        <button type="button" id="bonus" class="btn btn-primary"><div id="echo_chrono">200%<br>5000€</div></button>
-
-    </div>
-    <div class="container-score">
-      <div id="affichage" value="0">0 €</div>
-    </div>
-
-
-
-  </main>
-
-<!-- .js call at the end of the body -->
-  <script src="js/script.js"></script>
-</body>
+		</main>
+		
+		<!-- .js call at the end of the body -->
+		<script src="js/script.js"></script>
+	</body>
 </html>

@@ -24,9 +24,12 @@ body{
 }
 .btn-primary{
   background-color: #993333;
+    border: 2px solid #993333;
+
 }
 .btn-green{
   background-color: #0e6815;
+    border: 5px solid #0b5711;
 }
 .btn-yeallow{
   border: 2px solid #771b1b;
@@ -40,13 +43,15 @@ body{
   font-weight: 100;
   margin: 20px;
   color: #ffffff;
-  border-radius: 5%;
-  border: 2px solid transparent;
+  border-radius: 10px;
   box-shadow: 4px 0px 5px #5e5e5e;
   
 }
 .btn:hover{
   background-color: #5e0e0e;
+}
+.btn:active{
+    box-shadow: 1px 0px 2px #b1b1b1;
 }
 .btn-green:hover{
   background-color: #084a0d;
@@ -57,4 +62,9 @@ body{
 }
 #echo_chrono, #autoclic, #multiplicateur, #clic{
 	font-size: 15px;
+}
+#tower{
+	width: 850px;
+	margin-bottom: 50px;
+	position: absolute;
 }

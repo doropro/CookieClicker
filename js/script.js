@@ -1,3 +1,8 @@
+var c = document.getElementById("etoiles"); // on appelle id canvas dans son script
+
+var ctx = c.getContext("2d"); //on defini 2d ou 3d
+			
+		
 (function()
 {
 
@@ -17,9 +22,29 @@ function echoAffichage() {document.getElementById("affichage").textContent= scor
 function chrono() {document.getElementById("echo_chrono").textContent= valueChrono};
 
 
+/*
+var ry = 0;
 
 
+var flux = setInterval(star, 100);
+	function star(){
+	
+	ctx.clearRect(0, 0, 850, 500);
+			ry = ry +4;
 
+		var randomX = Math.floor(Math.random() * 4, 1);
+
+		ctx.fillStyle = "yellow";
+		ctx.fillRect(100+randomX, 200+ry, 3, 3);
+				console.log(ry);
+
+
+}
+*/
+
+
+var randomXRec = [];
+var randomYRec = [];
 
 // Augmentation de 1€ à chaque click
 document.getElementById("clic").addEventListener("click", function()
@@ -27,7 +52,7 @@ document.getElementById("clic").addEventListener("click", function()
       score = score + multiplicateur;   
       echoAffichage();
       echoMultiplicateur();
-      console.log(score);
+      
       
 /*-----Auto-click gratuit à 200€-----
 	
@@ -49,8 +74,43 @@ document.getElementById("clic").addEventListener("click", function()
       }
 */
 
-});
 
+if(score <= 1 )
+{
+	for (var iter = 1; iter <= 500; iter++)
+		{
+		var randomX = Math.floor(Math.random() * 850);
+		var randomY = Math.floor(Math.random() * 500);
+			
+		randomXRec.push(randomX);
+		randomYRec.push(randomY);
+		
+		ctx.fillStyle = "yellow";
+		ctx.fillRect(randomX, randomY, 5, 5);
+		}
+}
+else
+{	
+	var ry = 0;
+	var flux = setInterval(star, 10);
+	function star(){
+	
+	ctx.clearRect(0, 0, 850, 500);
+			ry = ry +10;
+	
+	for (var iter = 1; iter <= randomXRec.length; iter++)
+		{
+		var findX = randomXRec[iter];
+		var findY = randomYRec[iter];
+			
+		ctx.fillStyle = "blue";
+		ctx.fillRect(findX+2, findY+ry, 3, 3);
+	}
+}
+
+}
+
+});
 // Augmentation du multiplicateur (booster)
 
 document.getElementById("multiplicateur").addEventListener("click", function augmenterMultiplicateur()
@@ -105,7 +165,7 @@ document.getElementById("bonus").addEventListener("click", function()
 		 	 var x = setInterval(bonus, 1000);
 				
 				var tempMulti = multiplicateur;
-				multiplicateur = multiplicateur * 2; // le multiplicatuer est multiplié par deux pour avoir 200% 
+				multiplicateur *= 2; // le multiplicatuer est multiplié par deux pour avoir 200% 
 		        
 		        echoMultiplicateur();
 		        function bonus()
@@ -119,7 +179,7 @@ document.getElementById("bonus").addEventListener("click", function()
 					if(valueChrono == 0)
 					{
 
-					multiplicateur = multiplicateur - tempMulti;
+					multiplicateur -= tempMulti;
 					
 					
 					clearInterval(x);
@@ -136,3 +196,6 @@ document.getElementById("bonus").addEventListener("click", function()
  	});
 
 })();
+
+
+
