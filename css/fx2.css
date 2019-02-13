@@ -1,0 +1,12 @@
+body {
+  background-color: #000;
+}
+#image {
+    margin: 0 auto;
+    margin-top: 200px;
+    width: 138px;
+    height: 270px;
+    background: url('../img/flames.png') 0px 0px;
+    /*display: none; removed from the layout*/
+    /*visibility: hidden; still takes space in the layout*/
+}
