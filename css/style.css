@@ -19,7 +19,15 @@
   border: 1px dotted blue;
 }
 
-button {
-  margin: 0 auto;
-  background-color: red;
+.autoclic,.multiplicateur,.bonus{
+  height: 200px; /*permet d'obtenir un rond*/
+  width: 200px;/*permet d'obtenir un rond*/
+  color : #FFFFFF;
+  border-radius: 100%;
+  padding: 2px solid red;
+  margin: 3px 4px;
+  font-size: 20px;
+  font-family: 'Faster One', cursive;
+  background-image: linear-gradient(#FFFFFF, #FFA500, #FF8C00, #FF7F50, #FF6347, #FF4500);/*ajout degradé interieur bouton*/
+  box-shadow: 5px 10px 8px #888888; /*ajout d'une ombre aux boutons */
 }

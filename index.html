@@ -9,25 +9,32 @@
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/normalize.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
 </head>
 
-<body>
+	<body>
+		<main id="container">
+			<div id="tower">
+				<div class="container-btn">
+					<!--<button type="button" id="clic" class="btn btn-green">MASH ME</button>-->
+					<button type="button" id="multiplicateur" class="multiplicateur">BOOSTER X<span id="mult">1</span></br>  Next boost costs <span id="boostCost"></br>50</span></button>
+					<button type="button" id="autoclic" class="autoclic">Auto Click 500€</button>
+					<button type="button" id="bonus" class="bonus"><div id="echo_chrono">200%<br>5000</div></button>
+				</div>
 
-  <main id="container">
-    <div class="container-btn">
-        <button type="button" id="clic">MASH ME</button>
-        <button type="button" id="multiplicateur">BOOSTER X<span id="mult">1</span> | Next boost costs <span id="boostCost">50</span></button>
-    </div>
-    <div class="container-score">
-      <div id="affichage" value="0">0</div>
-    </div>
+				<div class="container-score">
+					<div id="affichage" value="0">Score : 0</div>
+				</div>
+			</div>
+			<canvas id="etoiles" width="850" height="500" style="background-color: #030c22";>
+				Votre navigateur ne supporte pas Canvas
+			</canvas>
 
 
 
-  </main>
+		</main>
 
-<!-- .js call at the end of the body -->
-  <script src="js/script.js"></script>
-</body>
+		<!-- .js call at the end of the body -->
+		<script src="js/script.js"></script>
+	</body>
 </html>
