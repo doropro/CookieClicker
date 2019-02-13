@@ -6,7 +6,8 @@
 
   <title>Cookie Clicker</title>
   <meta name="Cookie Clicker" content="Let's click cookies, yay!">
-
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/normalize.css">
 
@@ -16,20 +17,19 @@
 		<main id="container">
 			<div id="tower">
 				<div class="container-btn">
-					<button type="button" id="clic" class="btn btn-green">MASH ME</button>
-					<button type="button" id="multiplicateur" class="btn btn-primary">BOOSTER X<span id="mult">1</span>  Next boost costs <span id="boostCost">50</span></button>
-					<button type="button" id="autoclic" class="btn btn-primary">Auto Click 500€</button>
-					<button type="button" id="bonus" class="btn btn-primary"><div id="echo_chrono">200%<br>5000</div></button>
+					<button type="button" id="clic" class="btn-control-2">MASH ME</button>
+					<button type="button" id="multiplicateur" class="btn-control" style="font-size: 10px;">BOOSTER<br><span id="mult" style="font-size: 15px;">1</span><br>Next<span id="boostCost"> 50</span></button>
+					<button type="button" id="autoclic" class="btn-control">Auto Click 500</button>
+					<button type="button" id="bonus" class="btn-control"><div id="echo_chrono">200%<br>5000</div></button>
 				</div>
 				    
 				<div class="container-score">
 					<div id="affichage" value="0">Score : 0</div>
 				</div>
 			</div>
-			<canvas id="etoiles" width="850" height="500" style="background-color: #030c22";>
+			<canvas id="etoiles" width="850" height="800">
 				Votre navigateur ne supporte pas Canvas
 			</canvas>
-			
 			
 
 		</main>

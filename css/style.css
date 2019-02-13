@@ -1,7 +1,11 @@
+html{
+background: radial-gradient(farthest-corner, #0d1c45 2%, #000000);
+
+}
 body{
 	padding: 20px;
 	font-family: arial;
-	}
+}
 #container {
   width: 100%;
   max-width: 960px;
@@ -18,8 +22,13 @@ body{
 }
 
 .container-score {
-	background-color: #a9a9a9;
+	background-color: transparent;
 	border-radius: 5px;
+	font-family: 'Press Start 2P', cursive;
+	border: 1px solid #ffffff;
+	width: auto;
+	padding: 10px;
+	margin: 50px auto 0 auto;
 
 }
 .btn-primary{
@@ -68,3 +77,21 @@ body{
 	margin-bottom: 50px;
 	position: absolute;
 }
+
+.btn-control, .btn-control-2{
+  height: 100px; /*permet d'obtenir un rond*/
+  width: 100px;/*permet d'obtenir un rond*/
+  color : #FFFFFF;
+  border-radius: 5%;
+  padding: 2px solid red;
+  margin: 3px 15px;
+  font-size: 9px;
+	font-family: 'Press Start 2P', cursive;
+  background-image: linear-gradient(#FFFFFF, #FFA500, #FF8C00, #FF7F50, #FF6347, #FF4500);/*ajout degradé interieur bouton*/
+  box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.81); /*ajout d'une ombre aux boutons */
+  }
+ .btn-control:active{
+	   background-image: linear-gradient(#ffffff 0%, #ffa500 20.33%, #ff8c00 32.05%, #ff7f50 46.75%, #ff6347 63.44%, #ff4500 83.44%);/*ajout degradé interieur bouton*/
+
+  box-shadow: 5px 10px 8px rgba(0, 0, 0, 0); /*ajout d'une ombre aux boutons */
+ }

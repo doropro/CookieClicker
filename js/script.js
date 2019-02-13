@@ -1,6 +1,10 @@
 var c = document.getElementById("etoiles"); // on appelle l'id canvas dans son script
-
 var ctx = c.getContext("2d"); //on defini 2d ou 3d
+
+var fusee = c.getContext("2d"); //on defini 2d ou 3d
+
+var terre = c.getContext("2d"); //on defini 2d ou 3d
+
 			
 		
 (function()
@@ -14,13 +18,63 @@ var boost = 50;
 var autoclick;
 var autoclickStarted=false;
 var bonnusStarted=false;
-var valueChrono=11;
+var valueChrono=31;
 
 // l'affichage est mis dans une fonction
 function echoMultiplicateur() {document.getElementById("mult").textContent= multiplicateur};
 function echoAffichage() {document.getElementById("affichage").textContent= "Score : " + score};
 function chrono() {document.getElementById("echo_chrono").textContent= valueChrono};
 
+
+
+
+function rocket(){
+fusee.fillStyle = "white";
+fusee.fillRect(410, 325, 10, 55);
+fusee.fillRect(420, 300, 10, 70);
+fusee.fillRect(430, 325, 10, 55);
+fusee.fillStyle = "red";
+fusee.fillRect(410, 380, 10, 10);
+fusee.fillRect(420, 370, 10, 10);
+fusee.fillRect(430, 380, 10, 10);
+fusee.fillStyle = "white";
+fusee.fillRect(410, 390, 10, 55);
+fusee.fillRect(420, 380, 10, 80);
+fusee.fillRect(430, 390, 10, 55);
+fusee.fillStyle = "red";
+fusee.fillRect(400, 420, 10, 40);
+fusee.fillRect(390, 440, 10, 20);
+fusee.fillRect(440, 420, 10, 40);
+fusee.fillRect(450, 440, 10, 20);
+fusee.fillStyle = "white";
+fusee.fillRect(400, 390, 10, 35);
+fusee.fillRect(390, 410, 10, 35);
+fusee.fillRect(380, 420, 10, 35);
+fusee.fillRect(370, 430, 10, 35);
+fusee.fillRect(360, 400, 10, 65);
+
+fusee.fillRect(440, 390, 10, 35);
+fusee.fillRect(450, 410, 10, 35);
+fusee.fillRect(460, 420, 10, 35);
+fusee.fillRect(470, 430, 10, 35);
+fusee.fillRect(480, 400, 10, 65);
+
+fusee.fillStyle = "red";
+fusee.fillRect(480, 400, 10, 10);
+fusee.fillRect(360, 400, 10, 10);
+
+fusee.fillStyle = "blue";
+fusee.fillRect(450, 400, 10, 10);
+fusee.fillRect(390, 400, 10, 10);
+};
+
+function image(){
+	var img = new Image();
+	img.src = 'img/terre.png';
+	img.onload = function(){
+	terre.drawImage(img, 60,600,750,250);
+	}
+};
 
 /*
 var ry = 0;
@@ -42,43 +96,19 @@ var flux = setInterval(star, 100);
 }
 */
 
-/*
-var flow = setInterval(loopflow, 100);
-
-function loopflow() //loop global de la chute des étoiles
-{ 
-	var randomX = Math.floor(Math.random() * 845, 1); // création randomisée de coordonnées de l'axe X
-	var randomY = Math.floor(Math.random() * 495, 1); // création randomisée de coordonnées de l'axe Y
-	var speed = Math.floor(Math.random() * 70, 50); // création randomisée de la vitesse de chute du flocon	
 	
-	var velocity =0; //point initial du debut de la chute
 	
-	var flux = setInterval(star, speed);
 	
-	function star()
-	{
-		ctx.clearRect(0, 0, 850, 500); //efface la zone CANVAS
-			
-		velocity += 10; //intervalle entre 2 di
-		
-		var findY = randomY+velocity;		
-			
-			
-		ctx.fillStyle = "white";
-		ctx.fillRect(randomX, findY, 1, 20);
-		
-		
-		if(findY >= 500)
-		{
-			clearInterval(flux);
-		}
-		
-		console.log(findY);
-	}
-
-}
-*/
-
+	
+	
+	
+	
+	
+	
+	
+	
+var randomXRec = [];
+var randomYRec = [];
 
 
 // Augmentation de 1€ à chaque click
@@ -108,60 +138,25 @@ document.getElementById("clic").addEventListener("click", function()
 	      }
       }
 */
-var turbo = 4000 - score;
+	ctx.clearRect(0, 0, 850, 1000);
 
+for (var iter = 1; iter <= 100; iter++)
+	{
+	var randomX = Math.floor(Math.random() * 850, 1);
+	var randomY = Math.floor(Math.random() * 1000, 1);
+	var randomSizeStar = Math.floor(Math.random() * 5, 1);
 
-
-
-var speed = score;
-if(speed >= 10){starLength = 10;}
-
-var starLength = 2;
-starLength += score;
-if(starLength >= 30){starLength = 30;}
-
-var starWidth;
-if(starWidth <= 0){starWidth = 1;}
-
-
-
-var flow = setInterval(loopflow, turbo );
-
-function loopflow() //loop global de la chute des étoiles
-{ 
+	randomXRec.push(randomX);
+	randomYRec.push(randomY);
 	
-		var randomX = Math.floor(Math.random() * 845, 1); // création randomisée de coordonnées de l'axe X
-			var randomY = Math.floor(Math.random() * 495, 1); // création randomisée de coordonnées de l'axe Y
-		
-		var velocity =0; //point initial du debut de la chute
-		
-		var flux = setInterval(star, 150); // Ne pas toucher
-		
-		function star()
-		{
-			
-		
-			ctx.clearRect(0, 0, 850, 500); //efface la zone CANVAS
-				
-			velocity += 1; //intervalle entre 2 di
-			
-			var findY = randomY+velocity;		
-				
-				
-			ctx.fillStyle = "white";
-			ctx.fillRect(randomX, findY, 2, starLength);
-			
-			
-			if(findY >= 500)
-			{
-				clearInterval(flux);
-			}
-			
-			console.log(findY);
-		}
-}
+	ctx.fillStyle = "white";
+	ctx.fillRect(randomX, randomY, randomSizeStar, randomSizeStar);
+	}
+	
+	
+image();
 
-
+rocket();
 });
 // Augmentation du multiplicateur (booster)
 
@@ -189,7 +184,7 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 		score = score - 10;
 		setInterval(autoClick, 1000);
 		document.getElementById("autoclic").style.backgroundColor = "grey"; // Changement couleur de fond pour indiquer que l'autoClick a été enclanché
-		document.getElementById("autoclic").textContent= "Auto Click engaged for you 500€";
+		document.getElementById("autoclic").textContent= "Auto Click \"ON\"";
 		    function autoClick()
 		    {
 		    score = score +1;
@@ -223,8 +218,7 @@ document.getElementById("bonus").addEventListener("click", function()
 		        function bonus()
 		        {
 				valueChrono = valueChrono-1;
-				document.getElementById("echo_chrono").style.fontSize = "70px"; // augmente la taille du chrono
-				document.getElementById("bonus").style.backgroundColor = "grey"; // Changement couleur de fond 
+				document.getElementById("echo_chrono").style.fontSize = "40px"; // augmente la taille du chrono
 				chrono(); // 
 
 				
@@ -236,9 +230,8 @@ document.getElementById("bonus").addEventListener("click", function()
 					
 					clearInterval(x);
 					document.getElementById("echo_chrono").style.fontSize = "20px"; // Rétablier taille initial des caratère 
-					document.getElementById("bonus").style.backgroundColor = "#993333"; // revenir couleur d'origine 
-					document.getElementById("echo_chrono").textContent= "200% 5000€";
-					valueChrono = 11;
+					document.getElementById("echo_chrono").textContent= "200% 5000";
+					valueChrono = 31;
 					bonnusStarted = false
 			        }
 		        }
@@ -246,6 +239,7 @@ document.getElementById("bonus").addEventListener("click", function()
 			}
 		}	
  	});
+image();
 
 })();
 
