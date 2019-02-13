@@ -5,8 +5,8 @@ var fusee = c.getContext("2d"); //on defini 2d ou 3d
 
 var terre = c.getContext("2d"); //on defini 2d ou 3d
 
-			
-		
+
+
 (function()
 {
 
@@ -24,9 +24,6 @@ var valueChrono=31;
 function echoMultiplicateur() {document.getElementById("mult").textContent= multiplicateur};
 function echoAffichage() {document.getElementById("affichage").textContent= "Score : " + score};
 function chrono() {document.getElementById("echo_chrono").textContent= valueChrono};
-
-
-
 
 function rocket(){
 fusee.fillStyle = "white";
@@ -68,13 +65,7 @@ fusee.fillRect(450, 400, 10, 10);
 fusee.fillRect(390, 400, 10, 10);
 };
 
-function image(){
-	var img = new Image();
-	img.src = 'img/terre.png';
-	img.onload = function(){
-	terre.drawImage(img, 60,600,750,250);
-	}
-};
+
 
 /*
 var ry = 0;
@@ -82,7 +73,7 @@ var ry = 0;
 
 var flux = setInterval(star, 100);
 	function star(){
-	
+
 	ctx.clearRect(0, 0, 850, 500);
 			ry = ry +4;
 
@@ -96,17 +87,17 @@ var flux = setInterval(star, 100);
 }
 */
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 var randomXRec = [];
 var randomYRec = [];
 
@@ -114,27 +105,27 @@ var randomYRec = [];
 // Augmentation de 1€ à chaque click
 document.getElementById("clic").addEventListener("click", function()
 {
-      score = score + multiplicateur;   
+      score = score + multiplicateur;
       echoAffichage();
       echoMultiplicateur();
-      
-      
+
+
 /*-----Auto-click gratuit à 200€-----
-	
+
       if(autoclickStarted==false)
       {
 	      if(score >= 200)
 	      {
 	      setInterval(autoClick, 1000);
-		      
+
 		      function autoClick()
 		      {
 		      score = score +1;
-		      echoAffichage();     
+		      echoAffichage();
 		      }
-		      
+
 	      autoclickStarted=true;
-	      
+
 	      }
       }
 */
@@ -148,13 +139,10 @@ for (var iter = 1; iter <= 100; iter++)
 
 	randomXRec.push(randomX);
 	randomYRec.push(randomY);
-	
+
 	ctx.fillStyle = "white";
 	ctx.fillRect(randomX, randomY, randomSizeStar, randomSizeStar);
 	}
-	
-	
-image();
 
 rocket();
 });
@@ -170,7 +158,7 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 	echoAffichage();
 	echoMultiplicateur();
 	document.getElementById("boostCost").textContent = boost;
-	
+
 	}
 });
 
@@ -188,17 +176,17 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 		    function autoClick()
 		    {
 		    score = score +1;
-		    echoAffichage();            
+		    echoAffichage();
 		    }
-		    
+
 		    autoclickStarted = true;
 	    }
     }
-    
+
 	echoAffichage();
-	
+
 	});
-	
+
 // lancement du bonnus, pendant 30 seconde à chaque click le multiplicateur est multiplié par 2 donc 200%
 document.getElementById("bonus").addEventListener("click", function()
 	{
@@ -210,26 +198,26 @@ document.getElementById("bonus").addEventListener("click", function()
 	     	 echoAffichage(); // Affiche le score moins le coût du bonus
 
 		 	 var x = setInterval(bonus, 1000);
-				
+
 				var tempMulti = multiplicateur;
-				multiplicateur *= 2; // le multiplicatuer est multiplié par deux pour avoir 200% 
-		        
+				multiplicateur *= 2; // le multiplicatuer est multiplié par deux pour avoir 200%
+
 		        echoMultiplicateur();
 		        function bonus()
 		        {
 				valueChrono = valueChrono-1;
 				document.getElementById("echo_chrono").style.fontSize = "40px"; // augmente la taille du chrono
-				chrono(); // 
+				chrono(); //
 
-				
+
 					if(valueChrono == 0)
 					{
 
 					multiplicateur -= tempMulti;
-					
-					
+
+
 					clearInterval(x);
-					document.getElementById("echo_chrono").style.fontSize = "20px"; // Rétablier taille initial des caratère 
+					document.getElementById("echo_chrono").style.fontSize = "20px"; // Rétablier taille initial des caratère
 					document.getElementById("echo_chrono").textContent= "200% 5000";
 					valueChrono = 31;
 					bonnusStarted = false
@@ -237,11 +225,36 @@ document.getElementById("bonus").addEventListener("click", function()
 		        }
 			bonnusStarted = true;
 			}
-		}	
+		}
  	});
-image();
 
 })();
 
+//Booster flames animation
+
+var tID; //we will use this variable to clear the setInterval()
 
 
+function animateScript() {
+
+var    position = 138; //start position for the image slicer
+const  interval = 50; //40 ms of interval for the setInterval()
+
+tID = setInterval ( () => {
+
+//document.getElementById("image").style.visibility = `visible`;
+document.getElementById("image").style.backgroundPosition =
+`-${position}px 0px`;
+
+if (position < 414)
+{ position = position + 138;}
+//we increment the position by 138 each time
+else
+{ position = 138; }
+//reset the position to 256px, once position exceeds 1536px
+
+}
+, interval ); //end of setInterval
+
+} //end of animateScript()
+body.onload = animateScript();

@@ -54,7 +54,7 @@ body{
   color: #ffffff;
   border-radius: 10px;
   box-shadow: 4px 0px 5px #5e5e5e;
-  
+
 }
 .btn:hover{
   background-color: #5e0e0e;
@@ -78,7 +78,7 @@ body{
 	position: absolute;
 }
 
-.btn-control, .btn-control-2{
+.btn-control {
   height: 100px; /*permet d'obtenir un rond*/
   width: 100px;/*permet d'obtenir un rond*/
   color : #FFFFFF;
@@ -90,8 +90,85 @@ body{
   background-image: linear-gradient(#FFFFFF, #FFA500, #FF8C00, #FF7F50, #FF6347, #FF4500);/*ajout degradé interieur bouton*/
   box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.81); /*ajout d'une ombre aux boutons */
   }
+
+	.btn-control-2{
+		width: 140px;
+		height: 170px;
+		background: red;
+    border: 0; !important;
+    font-size: 0;
+		position: absolute;
+	}
+
+canvas {
+	margin: 0 auto;
+	z-index: 0;
+}
+
  .btn-control:active{
 	   background-image: linear-gradient(#ffffff 0%, #ffa500 20.33%, #ff8c00 32.05%, #ff7f50 46.75%, #ff6347 63.44%, #ff4500 83.44%);/*ajout degradé interieur bouton*/
 
   box-shadow: 5px 10px 8px rgba(0, 0, 0, 0); /*ajout d'une ombre aux boutons */
+ }
+
+ @keyframes slide {
+	 0% {
+		 bottom: -227px;
+	 }
+	 100% {
+		 bottom: 0px;
+		 animation-timing-function: ease-in;
+	 }
+ }
+
+ #terre {
+	 width: 700px;
+	 height: 227px;
+	 background-image: url("../img/terre.png");
+	 z-index: 2;
+	 position: fixed;
+	 bottom: 0%;
+	 left: 50%;
+	 transform: translateX(-50%);
+	 /*animation*/
+	 -webkit-animation: slide 5s;
+	 animation: slide 5s;
+ }
+
+ @keyframes rocketslide {
+	 0% {
+		 bottom: -600px;
+	 }
+	 100% {
+		 bottom: 35%;
+		 animation-timing-function: ease-in;
+	 }
+ }
+
+ .rocket {
+	 width: 125px;
+	 height: 109px;
+	 z-index: 3;
+	 position: fixed;
+	 left: 45%;
+	 bottom: 35%;
+	 transform: translateX(-200px);
+	 transform: translateY(-50%);
+	 /*animation*/
+	 -webkit-animation: rocketslide 5s;
+	 animation: rocketslide 5s;
+ }
+
+ #flames {
+     width: 138px;
+     height: 270px;
+     background: url('../img/flames.png') 0px 0px;
+		 position: fixed;
+		 bottom: 0%;
+		 left: 50%;
+		 transform: translateX(-50%);
+		 /*animation*/
+		 }
+     /*display: none; removed from the layout*/
+     /*visibility: hidden; still takes space in the layout*/
  }
