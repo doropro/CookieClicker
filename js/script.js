@@ -174,7 +174,7 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 		document.getElementById("autoclic").textContent= "Auto Click \"ON\"";
 		    function autoClick()
 		    {
-		    score = score +1;
+		    score = score + (multiplicateur);
 		    echoAffichage();
 		    }
 
@@ -220,11 +220,45 @@ document.getElementById("bonus").addEventListener("click", function()
 					document.getElementById("echo_chrono").textContent= "200% 5000";
 					valueChrono = 31;
 					bonnusStarted = false
+          stopAnimate()
 			        }
 		        }
 			bonnusStarted = true;
+      animateScript();
 			}
 		}
  	});
 
 })();
+
+// Animation flames reactor
+
+function stopAnimate() {
+
+clearInterval(tID);
+document.getElementById("flames").style.visibility = "hidden";
+
+} //end of stopAnimate()
+
+function animateScript() {
+
+var    position = 138; //start position for the image slicer
+const  interval = 50; //40 ms of interval for the setInterval()
+
+tID = setInterval ( () => {
+
+document.getElementById("flames").style.visibility = "visible";
+document.getElementById("flames").style.backgroundPosition =
+`-${position}px 0px`;
+
+if (position < 414)
+{ position = position + 138;}
+//we increment the position by 138 each time
+else
+{ position = 138; }
+//reset the position to 138px, once position exceeds 414px
+
+}
+, interval ); //end of setInterval
+
+} //end of animateScript()
