@@ -20,6 +20,17 @@ var autoclickStarted=false;
 var bonnusStarted=false;
 var valueChrono=31;
 
+var boosterOn = new Audio ("sons/announcer_booster_jp.mp3");
+var boosterOff = new Audio ("sons/UNACTIVE BUTTON.mp3");
+var autoclickOn = new Audio ("sons/announcer_autoclick.jp.mp3");
+var autoclickOff = new Audio ("sons/10-mario-died.mp3");
+var bonusOn = new Audio ("sons/announcer_multiply_JP.mp3");
+var bonuson2 = new Audio ("sons/space_unicorns.mp3");
+var bonusOff = new Audio ("sons/little-britain-all-computer-says-no.mp3");
+var sonFond = new Audio ("sons/maintheme.mp3");
+
+
+
 // l'affichage est mis dans une fonction
 function echoMultiplicateur() {document.getElementById("mult").textContent= multiplicateur};
 function echoAffichage() {document.getElementById("affichage").textContent= "Score : " + score};
@@ -104,6 +115,9 @@ var randomYRec = [];
 // Augmentation de 1€ à chaque click
 document.getElementById("clic").addEventListener("click", function()
 {
+
+      sonFond.play();
+      console.log(bonnusStarted);
       score = score + multiplicateur;
       echoAffichage();
       echoMultiplicateur();
@@ -151,6 +165,7 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 {
 	if(score >= boost)
 	{
+    boosterOn.play(); //lance le son au click
 	multiplicateur = multiplicateur + 1;
 	score = score - boost;
 	boost = boost * 2;
@@ -159,6 +174,10 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 	document.getElementById("boostCost").textContent = boost;
 
 	}
+  else
+	{
+		boosterOff.play(); //lance le son au click
+	}
 });
 
 // lancement de l'auto click de 1€ par seconde pour un montant de ....
@@ -166,9 +185,10 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
  	{
     if(autoclickStarted==false)
     {
-	    if(score >= 10)
+	    if(score >= 500)
 	    {
-		score = score - 10;
+		score = score - 500;
+    autoclickOn.play(); //lance le son au click
 		setInterval(autoClick, 1000);
 		document.getElementById("autoclic").style.backgroundColor = "grey"; // Changement couleur de fond pour indiquer que l'autoClick a été enclanché
 		document.getElementById("autoclic").textContent= "Auto Click \"ON\"";
@@ -180,6 +200,10 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 
 		    autoclickStarted = true;
 	    }
+      else
+			{
+				autoclickOff.play(); //lance le son au click
+			}
     }
 
 	echoAffichage();
@@ -191,9 +215,12 @@ document.getElementById("bonus").addEventListener("click", function()
 	{
 	    if(bonnusStarted==false)
 		{
-	       if(score >= 50)
+	       if(score >= 10)
 	     	{
-	     	 score = score - 50; // Le prix du bonnus est soustré du montant total
+          bonusOn.play(); //lance le son au click
+          bonuson2.play();
+          sonFond.pause();
+         score = score - 10; // Le prix du bonnus est soustré du montant total
 	     	 echoAffichage(); // Affiche le score moins le coût du bonus
 
 		 	 var x = setInterval(bonus, 1000);
@@ -217,15 +244,20 @@ document.getElementById("bonus").addEventListener("click", function()
 
 					clearInterval(x);
 					document.getElementById("echo_chrono").style.fontSize = "20px"; // Rétablier taille initial des caratère
-					document.getElementById("echo_chrono").textContent= "200% 5000";
+					document.getElementById("echo_chrono").textContent= "200% 2000";
 					valueChrono = 31;
-					bonnusStarted = false
-          stopAnimate()
+					bonnusStarted = false;
+          stopAnimate();
+          sonFond.play();
 			        }
 		        }
 			bonnusStarted = true;
       animateScript();
 			}
+      else
+      {
+        bonusOff.play(); //lance le son au click
+    }
 		}
  	});
 
