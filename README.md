@@ -1,10 +1,10 @@
 # CookieClicker
 
-Réalisé le principe du jeu CookieClicker.
+Réaliser le principe du jeu CookieClicker.
 
 ## Pincipe du jeu :
 
-Fais décoler la fusée
+Fais décoller la fusée
 
 Plus tu cliques, plus tu gagnes !!!
 
