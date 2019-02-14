@@ -122,6 +122,10 @@ document.getElementById("clic").addEventListener("click", function()
       echoAffichage();
       echoMultiplicateur();
 
+      if (bonnusStarted == true){
+        sonFond.pause();
+      }
+
 
 /*-----Auto-click gratuit à 200€-----
 
@@ -189,7 +193,7 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 	    {
 		score = score - 500;
     autoclickOn.play(); //lance le son au click
-		setInterval(autoClick, 1000);
+		setInterval(autoClick, 10);
 		document.getElementById("autoclic").style.backgroundColor = "grey"; // Changement couleur de fond pour indiquer que l'autoClick a été enclanché
 		document.getElementById("autoclic").textContent= "Auto Click \"ON\"";
 		    function autoClick()
@@ -215,7 +219,7 @@ document.getElementById("bonus").addEventListener("click", function()
 	{
 	    if(bonnusStarted==false)
 		{
-	       if(score >= 10)
+	       if(score >= 1000)
 	     	{
           bonusOn.play(); //lance le son au click
           bonuson2.play();
@@ -244,7 +248,7 @@ document.getElementById("bonus").addEventListener("click", function()
 
 					clearInterval(x);
 					document.getElementById("echo_chrono").style.fontSize = "20px"; // Rétablier taille initial des caratère
-					document.getElementById("echo_chrono").textContent= "200% 2000";
+					document.getElementById("echo_chrono").textContent= "200% 500";
 					valueChrono = 31;
 					bonnusStarted = false;
           stopAnimate();
