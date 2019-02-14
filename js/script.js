@@ -1,6 +1,10 @@
-var c = document.getElementById("etoiles"); // on appelle id canvas dans son script
-
+var c = document.getElementById("etoiles"); // on appelle l'id canvas dans son script
 var ctx = c.getContext("2d"); //on defini 2d ou 3d
+
+var fusee = c.getContext("2d"); //on defini 2d ou 3d
+
+var terre = c.getContext("2d"); //on defini 2d ou 3d
+
 
 
 (function()
@@ -14,13 +18,64 @@ var boost = 50;
 var autoclick;
 var autoclickStarted=false;
 var bonnusStarted=false;
-var valueChrono=11;
+var valueChrono=31;
 
-// l'affichage est mise dans une fonction
+// l'affichage est mis dans une fonction
 function echoMultiplicateur() {document.getElementById("mult").textContent= multiplicateur};
-function echoAffichage() {document.getElementById("affichage").textContent= score + " €"};
+function echoAffichage() {document.getElementById("affichage").textContent= "Score : " + score};
 function chrono() {document.getElementById("echo_chrono").textContent= valueChrono};
 
+
+
+// Rocket is not used anymore, an image button is used instead
+/*
+function rocket(){
+fusee.fillStyle = "white";
+fusee.fillRect(410, 325, 10, 55);
+fusee.fillRect(420, 300, 10, 70);
+fusee.fillRect(430, 325, 10, 55);
+fusee.fillStyle = "red";
+fusee.fillRect(410, 380, 10, 10);
+fusee.fillRect(420, 370, 10, 10);
+fusee.fillRect(430, 380, 10, 10);
+fusee.fillStyle = "white";
+fusee.fillRect(410, 390, 10, 55);
+fusee.fillRect(420, 380, 10, 80);
+fusee.fillRect(430, 390, 10, 55);
+fusee.fillStyle = "red";
+fusee.fillRect(400, 420, 10, 40);
+fusee.fillRect(390, 440, 10, 20);
+fusee.fillRect(440, 420, 10, 40);
+fusee.fillRect(450, 440, 10, 20);
+fusee.fillStyle = "white";
+fusee.fillRect(400, 390, 10, 35);
+fusee.fillRect(390, 410, 10, 35);
+fusee.fillRect(380, 420, 10, 35);
+fusee.fillRect(370, 430, 10, 35);
+fusee.fillRect(360, 400, 10, 65);
+
+fusee.fillRect(440, 390, 10, 35);
+fusee.fillRect(450, 410, 10, 35);
+fusee.fillRect(460, 420, 10, 35);
+fusee.fillRect(470, 430, 10, 35);
+fusee.fillRect(480, 400, 10, 65);
+
+fusee.fillStyle = "red";
+fusee.fillRect(480, 400, 10, 10);
+fusee.fillRect(360, 400, 10, 10);
+
+fusee.fillStyle = "blue";
+fusee.fillRect(450, 400, 10, 10);
+fusee.fillRect(390, 400, 10, 10);
+};
+// terre isn't used anymore, an <img> html tag is used instead
+function image(){
+	var img = new Image();
+	img.src = 'img/terre.png';
+	img.onload = function(){
+	terre.drawImage(img, 60,600,750,250);
+	}
+}; */
 
 /*
 var ry = 0;
@@ -42,9 +97,9 @@ var flux = setInterval(star, 100);
 }
 */
 
-
 var randomXRec = [];
 var randomYRec = [];
+
 
 // Augmentation de 1€ à chaque click
 document.getElementById("clic").addEventListener("click", function()
@@ -73,42 +128,21 @@ document.getElementById("clic").addEventListener("click", function()
 	      }
       }
 */
+	ctx.clearRect(0, 0, 850, 1000);
 
+for (var iter = 1; iter <= 100; iter++)
+	{
+	var randomX = Math.floor(Math.random() * 850, 1);
+	var randomY = Math.floor(Math.random() * 1000, 1);
+	var randomSizeStar = Math.floor(Math.random() * 5, 1);
 
-if(score <= 1 )
-{
-	for (var iter = 1; iter <= 500; iter++)
-		{
-		var randomX = Math.floor(Math.random() * 850);
-		var randomY = Math.floor(Math.random() * 500);
+	randomXRec.push(randomX);
+	randomYRec.push(randomY);
 
-		randomXRec.push(randomX);
-		randomYRec.push(randomY);
-
-		ctx.fillStyle = "yellow";
-		ctx.fillRect(randomX, randomY, 5, 5);
-		}
-}
-else
-{
-	var ry = 0;
-	var flux = setInterval(star, 10);
-	function star(){
-
-	ctx.clearRect(0, 0, 850, 500);
-			ry = ry +10;
-
-	for (var iter = 1; iter <= randomXRec.length; iter++)
-		{
-		var findX = randomXRec[iter];
-		var findY = randomYRec[iter];
-
-		ctx.fillStyle = "blue";
-		ctx.fillRect(findX+2, findY+ry, 3, 3);
+	ctx.fillStyle = "white";
+	ctx.fillRect(randomX, randomY, randomSizeStar, randomSizeStar);
 	}
-}
 
-}
 
 });
 // Augmentation du multiplicateur (booster)
@@ -137,7 +171,7 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 		score = score - 10;
 		setInterval(autoClick, 1000);
 		document.getElementById("autoclic").style.backgroundColor = "grey"; // Changement couleur de fond pour indiquer que l'autoClick a été enclanché
-		document.getElementById("autoclic").textContent= "Auto Click engaged for you 500€";
+		document.getElementById("autoclic").textContent= "Auto Click \"ON\"";
 		    function autoClick()
 		    {
 		    score = score +1;
@@ -171,8 +205,7 @@ document.getElementById("bonus").addEventListener("click", function()
 		        function bonus()
 		        {
 				valueChrono = valueChrono-1;
-				document.getElementById("echo_chrono").style.fontSize = "70px"; // augmente la taille du chrono
-				document.getElementById("bonus").style.backgroundColor = "grey"; // Changement couleur de fond
+				document.getElementById("echo_chrono").style.fontSize = "40px"; // augmente la taille du chrono
 				chrono(); //
 
 
@@ -184,9 +217,8 @@ document.getElementById("bonus").addEventListener("click", function()
 
 					clearInterval(x);
 					document.getElementById("echo_chrono").style.fontSize = "20px"; // Rétablier taille initial des caratère
-					document.getElementById("bonus").style.backgroundColor = "#993333"; // revenir couleur d'origine
-					document.getElementById("echo_chrono").textContent= "200% 5000€";
-					valueChrono = 11;
+					document.getElementById("echo_chrono").textContent= "200% 5000";
+					valueChrono = 31;
 					bonnusStarted = false
 			        }
 		        }
@@ -196,35 +228,3 @@ document.getElementById("bonus").addEventListener("click", function()
  	});
 
 })();
-
-function stopAnimate() {
-
-clearInterval(tID);
-//document.getElementById("image").style.visibility = `hidden`;
-
-} //end of stopAnimate()
-
-function animateScript() {
-
-var    position = 138; //start position for the image slicer
-const  interval = 50; //40 ms of interval for the setInterval()
-
-tID = setInterval ( () => {
-
-//document.getElementById("image").style.visibility = `visible`;
-document.getElementById("flames").style.backgroundPosition =
-`-${position}px 0px`;
-
-if (position < 414)
-{ position = position + 138;}
-//we increment the position by 138 each time
-else
-{ position = 138; }
-//reset the position to 256px, once position exceeds 1536px
-
-}
-, interval ); //end of setInterval
-
-} //end of animateScript()
-
-window.onload = animateScript();
