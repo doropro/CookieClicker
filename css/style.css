@@ -160,23 +160,26 @@ canvas {
 		 bottom: -600px;
 	 }
 	 100% {
-		 bottom: 35%;
+		 bottom: 10%;
 		 animation-timing-function: ease-in;
 	 }
  }
 
+#spaceship {
+	z-index: 3;
+	position: fixed;
+	left: 50%;
+	bottom: 10%;
+	transform: translateX(-50%);
+	/*animation*/
+	-webkit-animation: rocketslide 5s;
+	animation: rocketslide 5s;
+	text-align:center;
+}
+
  .rocket {
 	 width: 125px;
 	 height: 109px;
-	 z-index: 3;
-	 position: fixed;
-	 left: 45%;
-	 bottom: 35%;
-	 transform: translateX(-200px);
-	 transform: translateY(-50%);
-	 /*animation*/
-	 -webkit-animation: rocketslide 5s;
-	 animation: rocketslide 5s;
  }
 
  #flames {
@@ -184,11 +187,6 @@ canvas {
      width: 138px;
      height: 270px;
      background: url('../img/flames.png') 0px 0px;
-		 position: fixed;
-		 bottom: 10%;
-		 left: 50%;
-		 transform: translateX(-50%);
-		 z-index: 2
 		 /*animation*/
 		 }
      /*display: none; removed from the layout*/

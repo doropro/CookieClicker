@@ -121,10 +121,10 @@ document.getElementById("clic").addEventListener("click", function()
       score = score + multiplicateur;
       echoAffichage();
       echoMultiplicateur();
-
+// verouillage du lancement de la musique de fond pendant la phase Bonus
       if (bonnusStarted == true){
         sonFond.pause();
-      }
+      };
 
 
 /*-----Auto-click gratuit à 200€-----
@@ -193,7 +193,7 @@ document.getElementById("multiplicateur").addEventListener("click", function aug
 	    {
 		score = score - 500;
     autoclickOn.play(); //lance le son au click
-		setInterval(autoClick, 10);
+		setInterval(autoClick, 1000);
 		document.getElementById("autoclic").style.backgroundColor = "grey"; // Changement couleur de fond pour indiquer que l'autoClick a été enclanché
 		document.getElementById("autoclic").textContent= "Auto Click \"ON\"";
 		    function autoClick()
