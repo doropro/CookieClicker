@@ -19,7 +19,7 @@ Plus tu cliques, plus tu gagnes !!!
 
 Effectué la semaine du 7 au 14 février 2019 en tant que stagiaires chez BeCode
 
-## Langages utilisés :
+## Technologies utilisés :
 
 + HTML
 + CSS
