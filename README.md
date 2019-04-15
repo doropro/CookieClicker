@@ -38,4 +38,4 @@ lien github page : <https://jpscheppers.github.io/CookieClicker/>
 
 ## Aperçu du jeu :
 
-![Apercu jeu](img/jeu.png)
+![Apercu jeu](img/Screenshot_2019-04-15 Cookie Clicker.png)
